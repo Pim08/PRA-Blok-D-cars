@@ -43,7 +43,10 @@ namespace WheelyGoodCars
             Step1.Visibility = currentStep == 1 ? Visibility.Visible : Visibility.Collapsed;
             Step2.Visibility = currentStep == 2 ? Visibility.Visible : Visibility.Collapsed;
             Step3.Visibility = currentStep == 3 ? Visibility.Visible : Visibility.Collapsed;
+
+            StepProgressBar.Value = currentStep;
         }
+
 
         private void UploadImageButton_Click(object sender, RoutedEventArgs e)
         {

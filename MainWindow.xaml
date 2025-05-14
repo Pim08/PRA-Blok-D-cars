@@ -4,45 +4,44 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Wheely Good Cars" Height="450" Width="800">
+        Title="Wheely Good Cars" Height="500" Width="900" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <!-- TextBox Style -->
         <Style x:Key="TextBoxStyle" TargetType="TextBox">
-            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
             <Setter Property="Width" Value="350"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Background" Value="#2c3e50"/>
             <Setter Property="BorderBrush" Value="#3498db"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="3" Opacity="0.5" BlurRadius="6"/>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="3" Opacity="0.4" BlurRadius="6"/>
                 </Setter.Value>
             </Setter>
         </Style>
 
         <!-- Button Style -->
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="Width" Value="350"/>
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="#E74C3C"/>
+            <Setter Property="Background" Value="#e74c3c"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="15"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="3" Opacity="0.7" BlurRadius="6"/>
+                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="2" Opacity="0.6" BlurRadius="5"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -60,84 +59,79 @@
 
         <!-- TabItem Style -->
         <Style x:Key="TabItemStyle" TargetType="TabItem">
-            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Padding" Value="10,5"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="#1abc9c"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="#1a242f"/>
             <Setter Property="BorderBrush" Value="#16a085"/>
-            <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Margin" Value="0 10"/>
         </Style>
     </Window.Resources>
 
     <Grid Background="#1a242f">
         <TabControl Style="{StaticResource TabControlStyle}">
-            <!-- Tab voor Auto toevoegen -->
+            <!-- Auto Toevoegen -->
             <TabItem Header="Auto Toevoegen" Style="{StaticResource TabItemStyle}">
                 <Grid Background="#1a242f">
+                    <StackPanel Margin="20" VerticalAlignment="Top">
+                        <TextBlock Text="Voortgang" FontSize="16" Foreground="White" Margin="0 0 0 5"/>
+                        <ProgressBar x:Name="StepProgressBar" Height="20" Minimum="0" Maximum="3" Value="1"
+                 Foreground="#1abc9c" Background="#34495e"/>
+                    </StackPanel>
+
                     <StackPanel x:Name="Step1" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Vul het kenteken in" FontSize="18" Foreground="White"/>
-                        <TextBox x:Name="LicensePlateTextBox" Width="300" Height="40" Margin="10"/>
-                        <Button Content="Volgende" Click="NextStep_Click" Width="200"/>
+                        <TextBlock Text="Vul het kenteken in" FontSize="18" Foreground="White" Margin="10"/>
+                        <TextBox x:Name="LicensePlateTextBox" Style="{StaticResource TextBoxStyle}"/>
+                        <Button Content="Volgende" Click="NextStep_Click" Style="{StaticResource ButtonStyle}"/>
                     </StackPanel>
 
                     <StackPanel x:Name="Step2" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Gegevens controleren en prijs invullen" FontSize="18" Foreground="White" Margin="0 0 0 20"/>
+                        <TextBlock Text="Gegevens controleren en prijs invullen" FontSize="18" Foreground="White" Margin="10"/>
 
-                        <!-- Merk -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5">
-                            <TextBlock Text="Merk:" Width="100" FontSize="16" VerticalAlignment="Center" Foreground="White"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock Text="Merk:" Width="100" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
                             <TextBox x:Name="BrandTextBox" Style="{StaticResource TextBoxStyle}"/>
                         </StackPanel>
 
-                        <!-- Model -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5">
-                            <TextBlock Text="Model:" Width="100" FontSize="16" VerticalAlignment="Center" Foreground="White"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock Text="Model:" Width="100" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
                             <TextBox x:Name="ModelTextBox" Style="{StaticResource TextBoxStyle}"/>
                         </StackPanel>
 
-                        <!-- Prijs -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5">
-                            <TextBlock Text="Prijs:" Width="100" FontSize="16" VerticalAlignment="Center" Foreground="White"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock Text="Prijs:" Width="100" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
                             <TextBox x:Name="PriceTextBox" Style="{StaticResource TextBoxStyle}"/>
                         </StackPanel>
-                        <!-- Afbeelding selecteren -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5">
-                            <TextBlock Text="Foto:" Width="100" FontSize="16" VerticalAlignment="Center" Foreground="White"/>
-                            <Button Content="Selecteer Afbeelding" Click="UploadImageButton_Click" />
+
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock Text="Foto:" Width="100" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Button Content="Selecteer Afbeelding" Click="UploadImageButton_Click" Style="{StaticResource ButtonStyle}" Width="200"/>
                             <TextBlock x:Name="SelectedImageTextBlock" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
 
-                        <!-- Buttons -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20">
-                            <Button Content="Vorige" Click="PreviousStep_Click" Width="100" Margin="10"/>
-                            <Button Content="Volgende" Click="NextStep_Click" Width="100" Margin="10"/>
+                            <Button Content="Vorige" Click="PreviousStep_Click" Style="{StaticResource ButtonStyle}"/>
+                            <Button Content="Volgende" Click="NextStep_Click" Style="{StaticResource ButtonStyle}"/>
                         </StackPanel>
                     </StackPanel>
 
                     <StackPanel x:Name="Step3" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Vul een beschrijving in" FontSize="18" Foreground="White" Margin="0 0 0 20"/>
+                        <TextBlock Text="Vul een beschrijving in" FontSize="18" Foreground="White" Margin="10"/>
 
-                        <!-- Beschrijving -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 5">
-                            <TextBlock Text="Beschrijving:" Width="100" FontSize="16" VerticalAlignment="Top" Foreground="White"/>
-                            <TextBox x:Name="DescriptionTextBox" Style="{StaticResource TextBoxStyle}" Height="80"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock Text="Beschrijving:" Width="100" FontSize="16" Foreground="White" VerticalAlignment="Top"/>
+                            <TextBox x:Name="DescriptionTextBox" Style="{StaticResource TextBoxStyle}" Height="100"/>
                         </StackPanel>
 
-                        <!-- Buttons -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20">
-                            <Button Content="Vorige" Click="PreviousStep_Click" Width="100" Margin="10"/>
-                            <Button Content="Auto Toevoegen" Click="AddCarButton_Click" Width="200" Margin="10"/>
+                            <Button Content="Vorige" Click="PreviousStep_Click" Style="{StaticResource ButtonStyle}"/>
+                            <Button Content="Auto Toevoegen" Click="AddCarButton_Click" Style="{StaticResource ButtonStyle}"/>
                         </StackPanel>
-
-
-
                     </StackPanel>
                 </Grid>
             </TabItem>
 
-            <!-- Tab voor Auto's Overzicht -->
+            <!-- Overzicht -->
             <TabItem Header="Overzicht van Auto's" Style="{StaticResource TabItemStyle}">
                 <ListView x:Name="CarsListView" Margin="10">
                     <ListView.View>
@@ -155,15 +149,14 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-
                         </GridView>
                     </ListView.View>
                 </ListView>
             </TabItem>
 
-            <!-- Tab voor Auto Verwijderen -->
-            <TabItem Header="Auto Verwijderen"  Style="{StaticResource TabItemStyle}">
-                <StackPanel Margin="10">
+            <!-- Verwijderen -->
+            <TabItem Header="Auto Verwijderen" Style="{StaticResource TabItemStyle}">
+                <StackPanel Margin="10" HorizontalAlignment="Center">
                     <TextBlock Text="Geef de ID van de te verwijderen auto in" Margin="5" FontSize="18" Foreground="White"/>
                     <TextBox x:Name="CarIdToDeleteTextBox" Style="{StaticResource TextBoxStyle}"/>
                     <Button x:Name="DeleteCarButton" Content="Verwijder auto" Style="{StaticResource ButtonStyle}" Click="DeleteCarButton_Click"/>

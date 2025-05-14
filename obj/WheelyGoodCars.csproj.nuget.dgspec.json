@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\pra blok D cars\\WheelyGoodCars.csproj": {}
+    "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\WheelyGoodCars.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\pra blok D cars\\WheelyGoodCars.csproj": {
+    "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\WheelyGoodCars.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\pra blok D cars\\WheelyGoodCars.csproj",
+        "projectUniqueName": "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\WheelyGoodCars.csproj",
         "projectName": "WheelyGoodCars",
-        "projectPath": "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\pra blok D cars\\WheelyGoodCars.csproj",
+        "projectPath": "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\WheelyGoodCars.csproj",
         "packagesPath": "C:\\Users\\pimsc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\pra blok D cars\\obj\\",
+        "outputPath": "C:\\Users\\pimsc\\Downloads\\pra blok D cars\\PRA-Blok-D-cars\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
