@@ -75,7 +75,7 @@
                 <Grid Background="#1a242f">
                     <StackPanel Margin="20" VerticalAlignment="Top">
                         <TextBlock Text="Voortgang" FontSize="16" Foreground="White" Margin="0 0 0 5"/>
-                        <ProgressBar x:Name="StepProgressBar" Height="20" Minimum="0" Maximum="3" Value="1"
+                        <ProgressBar x:Name="StepProgressBar" Height="20" Minimum="0" Maximum="4" Value="1"
                  Foreground="#1abc9c" Background="#34495e"/>
                     </StackPanel>
 
@@ -125,15 +125,38 @@
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20">
                             <Button Content="Vorige" Click="PreviousStep_Click" Style="{StaticResource ButtonStyle}"/>
+                            <Button Content="Volgende" Click="NextStep_Click" Style="{StaticResource ButtonStyle}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel x:Name="Step4" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Voeg tags toe (gescheiden door komma's)" FontSize="18" Foreground="White" Margin="10"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock Text="Tags:" Width="100" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <TextBox x:Name="TagsTextBox" Style="{StaticResource TextBoxStyle}" Width="400"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20">
+                            <Button Content="Vorige" Click="PreviousStep_Click" Style="{StaticResource ButtonStyle}"/>
                             <Button Content="Auto Toevoegen" Click="AddCarButton_Click" Style="{StaticResource ButtonStyle}"/>
                         </StackPanel>
                     </StackPanel>
+
                 </Grid>
             </TabItem>
-
+            
             <!-- Overzicht -->
             <TabItem Header="Overzicht van Auto's" Style="{StaticResource TabItemStyle}">
-                <ListView x:Name="CarsListView" Margin="10">
+                <StackPanel>
+                    <TextBox x:Name="TagSearchTextBox"
+                 Style="{StaticResource TextBoxStyle}"
+                 Width="500"
+                 Height="50"
+                 Margin="18"
+                 Text=""
+                 TextChanged="TagSearchTextBox_TextChanged"/>
+                    <ListView x:Name="CarsListView" Margin="10" SelectionChanged="CarsListView_SelectionChanged">
+                        
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
@@ -142,16 +165,20 @@
                             <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Model}" Width="100"/>
                             <GridViewColumn Header="Prijs" DisplayMemberBinding="{Binding Price}" Width="100"/>
                             <GridViewColumn Header="Beschrijving" DisplayMemberBinding="{Binding Description}" Width="200"/>
-                            <GridViewColumn Header="Afbeelding" Width="100">
+                            <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Tags}" Width="150"/>
+                                
+                                <GridViewColumn Header="Afbeelding" Width="100">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Image Source="{Binding ImagePath}" Width="80" Height="50"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
+                            
                         </GridView>
                     </ListView.View>
                 </ListView>
+                    </StackPanel>
             </TabItem>
 
             <!-- Verwijderen -->
@@ -162,6 +189,21 @@
                     <Button x:Name="DeleteCarButton" Content="Verwijder auto" Style="{StaticResource ButtonStyle}" Click="DeleteCarButton_Click"/>
                 </StackPanel>
             </TabItem>
+            <!-- Auto Tags Bewerken -->
+            <TabItem Header="Tags Bewerken" Style="{StaticResource TabItemStyle}">
+                <Grid Background="#1a242f">
+                    <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Voer het Auto ID in" FontSize="18" Foreground="White" Margin="10"/>
+                        <TextBox x:Name="TagEditCarIdTextBox" Style="{StaticResource TextBoxStyle}" Tag="ID van auto"/>
+
+                        <TextBlock Text="Nieuwe Tags" FontSize="18" Foreground="White" Margin="10"/>
+                        <TextBox x:Name="NewTagsTextBox" Style="{StaticResource TextBoxStyle}" Tag="Nieuwe tags..."/>
+
+                        <Button Content="Pas Tags Aan" Click="UpdateTagsButton_Click" Style="{StaticResource ButtonStyle}"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

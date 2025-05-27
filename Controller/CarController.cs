@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using WheelyGoodCars.Data;
 using WheelyGoodCars.Model;
 
@@ -15,7 +16,7 @@ namespace WheelyGoodCars.Controller
         }
 
         // Voeg een nieuwe auto toe
-        public void AddCar(string licensePlate, string brand, string model, decimal price, string description, string image)
+        public void AddCar(string licensePlate, string brand, string model, decimal price, string description, string image, string tags = "")
         {
             var car = new Car
             {
@@ -24,27 +25,37 @@ namespace WheelyGoodCars.Controller
                 Model = model,
                 Price = price,
                 Description = description,
-                ImagePath = image
+                ImagePath = image,
+                Tags = tags
             };
 
             _context.Cars.Add(car);
-            _context.SaveChanges(); // Zorg ervoor dat de auto wordt opgeslagen in de database
+            _context.SaveChanges();
             Console.WriteLine("Auto toegevoegd");
         }
 
-
-        // Toon alle auto's en retourneer ze als een lijst
+        // Toon alle auto's
         public List<Car> ListCars()
         {
+            
             var cars = _context.Cars.ToList();
             Console.WriteLine("Overzicht van alle aangeboden auto's:");
             foreach (var car in cars)
             {
-                Console.WriteLine($"{car.Id} | {car.Brand} {car.Model} - {car.LicensePlate} | €{car.Price} | {car.Description}");
+                Console.WriteLine($"{car.Id} | {car.Brand} {car.Model} - {car.LicensePlate} | €{car.Price} | {car.Description} | Tags: {car.Tags}");
             }
-            return cars; // retourneer de lijst van auto's
+            return cars;
         }
-
+        public bool UpdateCarTags(int id, string newTags)
+        {
+            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+            if (car != null)
+            {
+                car.Tags = newTags;
+                return true;
+            }
+            return false;
+        }
 
 
         // Verwijder een auto
